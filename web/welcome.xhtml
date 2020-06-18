@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+  <title>Dating App | Tour</title>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"/>
+
+  <link href="css/style.css" rel="stylesheet"/>
+    <ui:insert name="head"/>
+    
+  </h:head>
+
+ <h:body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.xhtml">Dating App</a>
+          <h:link class="nav-link" outcome="index.xhtml">   Logout   </h:link> 
+        </div>
+    </nav>
+
+    <div class="container-fluid container-home">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-2" id="sidebar-wrapper">
+              <div class="list-group list-group-flush">
+                <h:link  class="list-group-item list-group-item-action" outcome="message.xhtml" >
+                    Message
+                </h:link>
+                <h:link  class="list-group-item list-group-item-action" outcome="friends.xhtml" >
+                    Friends
+                </h:link>
+                <h:link  class="list-group-item list-group-item-action" outcome="search.xhtml" >
+                    Search
+                </h:link>
+                <h:link  class="list-group-item list-group-item-action" outcome="notifications.xhtml" >
+                    Notifications
+                </h:link>
+                  <h:link  class="list-group-item list-group-item-action" outcome="block.xhtml" >
+                    Block
+                </h:link>
+              </div>
+            </div>
+            <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5">
+                <div class="jumbotron content-wrapper">
+                    <h1 class="display-4">Welcome! <h:outputLabel class="display-4" value="#{welcomePage.loginUser.f_Name}"/></h1>
+                    <h2>check below for the top profiles for this week with their views </h2>
+                </div>
+                              
+                <div class="card-deck">
+                    <div class="card bg-warning">
+                        <ui:repeat value="#{topViewers.viewers}" var="m">
+                            <img class="card-img-top img-circle" src="img/generic-male-icon.jpg" alt="Card image"/>
+                            <div class="card-body">
+                                <h4 class="card-title">#{m.f_Name}, #{m.l_Name}</h4>
+
+                                <h4 class="card-title">#{m.gender}, #{m.views}</h4>
+
+                            </div>
+                        </ui:repeat>
+                    </div>
+                <div class="card bg-warning">
+                     <ui:repeat value="#{topViewers.view}" var="f">
+                   <img class="card-img-top img-circle" src="img/generic-female-icon.jpg" alt="Card image"/>
+                  <div class="card-body">
+                       <h4 class="card-title">#{f.f_Name}, #{f.l_Name}</h4>
+                      
+                      <h4 class="card-title">#{f.gender}, #{f.views}</h4>
+                    
+                  </div>
+                </ui:repeat>
+                
+
+                              
+                
+            </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+ </div>   
+  
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  </h:body>
+</html>
