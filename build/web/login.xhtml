@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title> Login </title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link href="css/animate.min.css" rel="stylesheet"/>
+    <link href="css/prettyPhoto.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <f:verbatim>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->    
+    </f:verbatim>
+    <ui:insert name="head"/>
+    
+  </h:head>
+    <h:body class="bg-gradient">
+      
+      <div class="container m-5 p-5 mx-auto">
+          <div class="row justify-content-md-center">
+               <div class="card">
+              <div class="card-body">
+                   <!-- Nav tabs -->
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#login">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#register">Registration</a>
+                  </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div id="login" class="container tab-pane active">
+                    <h:form>
+                     <div class="form-group">
+                       <label for="username">User Name</label>
+                       <!--<input type="text" class="form-control" id="username" aria-described by="username" placeholder="Enter user name"/>-->
+                        <h:inputText id="username" class="form-control" required ="true" requiredMessage="The Username field cannot be empty"
+                        title="Please enter your username"
+                        value="#{login.userName}"
+                 validatorMessage="The username must be between 3 and 20 characters">
+                    <f:validateLength maximum="20" minimum="3" />
+                </h:inputText>
+                     </div>
+                     <div class="form-group">
+                       <label for="password">Password</label>
+                       <!--<input type="password" class="form-control" id="password" placeholder="Enter password"/>-->
+                       <h:inputSecret id="password" class="form-control" required ="true" requiredMessage="The Password field cannot be empty"
+                        title="Please enter your password"
+                        value="#{login.password}"
+                 validatorMessage="The password must be between 3 and 20 characters">
+                    <f:validateLength maximum="20" minimum="3" />
+                </h:inputSecret>
+                     </div>
+                     <h:commandButton id="submit" value="Submit" class="btn btn-primary"
+                                      action="#{login.loginUser()}" />
+                   </h:form>
+                  </div>
+                    
+                    
+                    
+                  <div id="register" class="container tab-pane fade">
+                      
+                      <h:form>
+                        <div class="form-group">
+                            <label for="Gender">I am</label><br/>
+                            <h:selectOneRadio value = "#{register.gender}"> 
+                                    <f:selectItem itemValue = "Male" itemLabel = "Male" /> 
+                                    <f:selectItem itemValue = "Female" itemLabel = "Female" />
+                                </h:selectOneRadio>
+                           
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <h:inputText id="firstname" class="form-control" required ="true" requiredMessage="The firstname field cannot be empty"
+                            title="Please enter your firstname"
+                            value="#{register.f_Name}"
+                            validatorMessage="The firstname must be between 3 and 20 characters">
+                            <f:validateLength maximum="20" minimum="3" />
+                            </h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <h:inputText id="lastname" class="form-control" required ="true" requiredMessage="The lastname field cannot be empty"
+                            title="Please enter your lastname"
+                            value="#{register.l_Name}"
+                            validatorMessage="The lastname must be between 3 and 20 characters">
+                            <f:validateLength maximum="20" minimum="3" />
+                            </h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <h:inputText id="age" class="form-control" required ="true" requiredMessage="The age field cannot be empty"
+                            title="Please enter your age"
+                            value="#{register.age}" >
+                          
+                            </h:inputText>
+                        </div>
+                          <div class="form-group">
+                            <label for="city">City</label>
+                            <h:inputText id="city" class="form-control" required ="true" requiredMessage="The city field cannot be empty"
+                            title="Please enter your city"
+                            value="#{register.city}"
+                            validatorMessage="The city must be between 3 and 20 characters">
+                            <f:validateLength maximum="20" minimum="3" />
+                            </h:inputText>
+                        </div>
+                           <div class="form-group">
+                            <label for="interest">Interest</label>
+                            <h:inputText id="interest" class="form-control" required ="true" requiredMessage="The interest field cannot be empty"
+                            title="Please enter your interest"
+                            value="#{register.interest}">
+                          
+                            </h:inputText>
+                        </div>
+                          
+                          
+                        <div class="form-group">
+                            <label for="username">User Name</label>
+                            <!--<input type="username" class="form-control" id="username" aria-described by="username" placeholder="Enter username"/>-->
+                            <h:inputText id="username" class="form-control" required ="true" requiredMessage="The Username field cannot be empty"
+                            title="Please enter your username"
+                            value="#{register.userName}"
+                            validatorMessage="The username must be between 3 and 20 characters">
+                            <f:validateLength maximum="20" minimum="3" />
+                            </h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <!--<input type="password" class="form-control" id="password" placeholder="Enter password"/>-->
+                            <h:inputSecret id="password" class="form-control" required ="true" requiredMessage="The Password field cannot be empty"
+                        title="Please enter your password"
+                        value="#{register.password}"
+                 validatorMessage="The password must be between 3 and 20 characters">
+                    <f:validateLength maximum="20" minimum="3" />
+                </h:inputSecret>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmpassword">Confirm Password</label>
+                            <!--<input type="password" class="form-control" id="confirm password" placeholder="Confirm password"/>-->
+                            <h:inputSecret id="confirmpassword" class="form-control" required ="true" requiredMessage="The Password field cannot be empty"
+                            title="Please enter your password"
+                            value="#{register.password}"
+                            validatorMessage="The password must be between 3 and 20 characters">
+                            <f:validateLength maximum="20" minimum="3" />
+                            
+                            </h:inputSecret>
+                     </div>
+                     <h:commandButton id="submit" value="Submit" class="btn btn-primary"
+                                      action="#{register.registerUser()}" />
+
+                      </h:form> 
+                  </div>
+                </div>
+     
+                
+              </div>
+          </div>
+          </div>
+         
+      </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"/>
+
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/jquery.isotope.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/main.js"></script>
+        
+  </h:body>
+</html>
+

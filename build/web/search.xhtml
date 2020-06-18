@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Dating App | Search</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"/>
+
+        <link href="css/style.css" rel="stylesheet"/>
+        <style>
+            .container-fluid::before{
+                display: none !important;
+            }
+            .container-fluid::after{
+                display: none !important;
+            }
+            
+            .navbar-custom .navbar-head {
+                text-transform: uppercase !important;
+                font-size: 1.5rem !important;
+                color: #fff;
+                font-weight: 700;
+            }
+            .navbar-custom .navbar-link {
+                font-size: 1.4rem !important;
+                font-weight: 700 !important;
+                color: #E8CE0E !important;
+            }
+        </style>
+    </h:head>
+    <h:body>
+     
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container-fluid">
+                   <a class="navbar-head" href="index.xhtml">Dating App</a>
+                    <h:link class="navbar-link" outcome="index.xhtml">   Logout   </h:link> 
+        </div>
+    </nav>
+     
+    <div class="container-fluid mt-5 container-home">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-2" id="sidebar-wrapper">
+              <div class="list-group list-group-flush">
+                <h:link  class="list-group-item list-group-item-action" outcome="welcome.xhtml" >
+                    Feed
+                </h:link>
+                <h:link  class="list-group-item list-group-item-action" outcome="message.xhtml" >
+                    Message
+                </h:link>
+                <h:link  class="list-group-item list-group-item-action" outcome="friends.xhtml" >
+                    Friends
+                </h:link>
+                <h:link  class="list-group-item list-group-item-action active" outcome="search.xhtml" >
+                    Search
+                </h:link>
+                  <h:link  class="list-group-item list-group-item-action" outcome="top3.xhtml" >
+                    Top3
+                </h:link>
+                <h:link  class="list-group-item list-group-item-action bg-light" outcome="notifications.xhtml" >
+                    Notifications
+                </h:link>
+              </div>
+            </div>
+                
+            <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5">
+                <h:form>
+                  <b:dataTable value="#{search.searchByGender()}"     var="user"   onpage="console.log('page');">
+                    <b:dataTableColumn value="#{user.user_ID}" />
+                    <b:dataTableColumn value="#{user.f_Name}" />
+                    <b:dataTableColumn value="#{user.l_Name}" />
+                    <b:dataTableColumn value="#{user.age}"  order="asc" />
+                    
+                        <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="View Profile" />
+                        </f:facet>
+                             <h:form>
+                          <h:commandButton id="submit"  value="View Profile"  action="#{viewProfile.viewProfile(user.user_ID)}"/>
+                             </h:form>
+                        </h:column>  
+                      <h:column>
+                            <f:facet name="header">
+                           <h:outputText value="Send Request" />
+                       </f:facet>
+                        <h:form>
+                            <h:commandButton id="submit"  value="Send Request"  action="#{friendReq.friendReq(user.user_ID)}"/>
+                        </h:form>
+
+                       </h:column>
+                    </b:dataTable>
+                    <!--<b:commandButton value="Button" look="missing" disabled="true" onclick="#{viewProfile.viewProfile(user.user_ID)}"/>-->
+                </h:form>
+            </div>   
+                    
+        </div>
+    </div>
+                
+    </h:body>
+</html>
+           
